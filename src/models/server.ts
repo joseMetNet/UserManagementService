@@ -23,6 +23,7 @@ class Server {
       example: "/UserManagement",
     };
 
+
     
     // Conectar a bd
     this.conectarDB();
