@@ -8,7 +8,7 @@
     "build": "tsc && node config-builds/copy-locals.js",
     "dev": "ts-node-dev src/app.ts"
   },
-  "author": "Duvan Moncada",
+  "author": "Brayan Pulido",
   "license": "ISC",
   "dependencies": {
     "@types/bcrypt": "^5.0.2",

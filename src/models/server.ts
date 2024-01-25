@@ -17,7 +17,7 @@ class Server {
 
   constructor() {
     this.app = express();
-    this.port = '5055';
+    this.port = config.port || '8080';
     this.path = {
       // exmple
       example: "/UserManagement",
