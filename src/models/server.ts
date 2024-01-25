@@ -17,14 +17,14 @@ class Server {
 
   constructor() {
     this.app = express();
-    this.port = config.port;
+    this.port = '5055';
     this.path = {
       // exmple
       example: "/UserManagement",
     };
 
 
-    
+
     // Conectar a bd
     this.conectarDB();
     // Middlwares
