@@ -8,10 +8,10 @@ const configSQL: sql.config = {
   // user: config.user_server_sql,
   // password: "13A132b17#",
   // database: config.name_database_sql,
-  server: "metnetservicios.database.windows.net",
-  user: "MetNetMicroServices",
-  password: "13A132b17#",
-  database:"MetNetMicroServicio",
+  server: 'metnetservicios.database.windows.net',
+  user: 'MetNetMicroServices',
+  password: '13A132b17#',
+  database:'MetNetMicroServicios',
   options: {
     encrypt: true, // Puedes necesitar establecer esto a true dependiendo de tu configuración
   },
