@@ -68,13 +68,13 @@ export const authenticateUser = async (data: dataExample): Promise<IresponseRepo
     if (!isPasswordValid) {
       return {
         code: 401,
-        message: 'users.authenticationSuccess',
+        message: 'ok',
         data: user,
       };
     }
     return {
       code: 200,
-      message: 'users.authenticationSuccess',
+      message: 'ok',
       data: user.id,
     };
 

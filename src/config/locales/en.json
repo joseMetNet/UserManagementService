@@ -17,5 +17,6 @@
 		"idComposed": "Example id: {{_id}}",
 		"userNotFound": "users.userNotFound",
 		"authenticationSuccess": "users.authenticationSuccess"
-	}
+	},
+	"ok": "ok"
 }
