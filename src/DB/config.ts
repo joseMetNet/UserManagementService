@@ -5,19 +5,10 @@ import config from "../config/config";
 import * as sql from 'mssql';
 
 const configSQL: sql.config = {
-  // user: config.user_server_sql,
-  // password: "13A132b17#",
-  // database: config.name_database_sql,
-  // server: 'metnetservicios.database.windows.net',
-  // user: 'MetNetMicroServices',
-  // password: '13A132b17#',
-  // database:'MetNetMicroServicios',
-
-  server: 'metnetvizor.database.windows.net',
-  user: 'MetNetVizor',
-  password: '13A132b17#',
-  database:'MicroServices',
-
+  user: config.user_server_sql,
+  password: "13A132b17#",
+  database: config.name_database_sql,
+  server:config.server_name_sql,
   options: {
     encrypt: true,
   },
@@ -26,14 +17,8 @@ const configSQL: sql.config = {
 // Instancia de conexión para SQL
 async function connectToSqlServer() {
   try {
-
-
     const pool = await sql.connect(configSQL); // Utiliza la configuración de SQL
     console.log('Conectado a SQL Server');
-
-    // Ejemplo de consulta
-    const result = await pool.request().query('SELECT 1 as Numero');
-    console.log('Resultado de la consulta:', result.recordset);
 
     return pool;
   } catch (err) {

@@ -3,7 +3,7 @@ import { body} from "express-validator";
 import {
 
   createUsers,
-
+  authenticationUser,
 } from "../controllers/users";
 
 
@@ -19,6 +19,20 @@ routes.post(
   ],
   createUsers
 );
+
+
+// Create 
+routes.post(
+  "/authenticationUser",
+  [
+    body("tableName", "companies.validate_id_empty").notEmpty().isString(),
+    body("email", "companies.validate_id_empty").notEmpty().isEmail(),
+    body("password", "companies.validate_id_empty").notEmpty().isString(),
+  ],
+  authenticationUser
+);
+
+
 
 
 
