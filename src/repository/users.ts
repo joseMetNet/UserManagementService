@@ -41,49 +41,49 @@ export const createUser = async (data: dataExample): Promise<IresponseRepository
 
 
 
-export const authenticateUser = async (data: dataExample): Promise<IresponseRepositoryService> => {
-  try {
-    const { email, password, tableName } = data;
+// export const authenticateUser = async (data: dataExample): Promise<IresponseRepositoryService> => {
+//   try {
+//     const { email, password, tableName } = data;
 
-    const db = await connectToSqlServer();
+//     const db = await connectToSqlServer();
 
-    // Obtener el usuario por correo electrónico
-    const userResult = await db?.request()
-      .query(`SELECT TOP 1 * FROM ${tableName} WHERE email = '${email}'`);
+//     // Obtener el usuario por correo electrónico
+//     const userResult = await db?.request()
+//       .query(`SELECT TOP 1 * FROM ${tableName} WHERE email = '${email}'`);
 
 
-    // Verificar si se encontró un usuario
-    if (!userResult || userResult.recordset.length === 0) {
-      return {
-        code: 401,  // Código 401 para indicar no autorizado
-        message: { translationKey: "users.userNotFound", translationParams: { email } },
-      };
-    }
+//     // Verificar si se encontró un usuario
+//     if (!userResult || userResult.recordset.length === 0) {
+//       return {
+//         code: 401,  // Código 401 para indicar no autorizado
+//         message: { translationKey: "users.userNotFound", translationParams: { email } },
+//       };
+//     }
 
-    const user = userResult.recordset[0];
+//     const user = userResult.recordset[0];
 
-    // Verificar la contraseña utilizando bcrypt
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+//     // Verificar la contraseña utilizando bcrypt
+//     const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    if (!isPasswordValid) {
-      return {
-        code: 401,
-        message: 'ok',
-        data: user,
-      };
-    }
-    return {
-      code: 200,
-      message: 'ok',
-      data: user.id,
-    };
+//     if (!isPasswordValid) {
+//       return {
+//         code: 401,
+//         message: 'ok',
+//         data: user,
+//       };
+//     }
+//     return {
+//       code: 200,
+//       message: 'ok',
+//       data: user.id,
+//     };
 
-  } catch (err: any) {
-    console.error("Error en la autenticación del usuario", err);
-    return {
-      code: 500,
-      message: { translationKey: "users.errorInRepository", translationParams: { name: "authenticateUser" } },
-    };
-  }
-};
+//   } catch (err: any) {
+//     console.error("Error en la autenticación del usuario", err);
+//     return {
+//       code: 500,
+//       message: { translationKey: "users.errorInRepository", translationParams: { name: "authenticateUser" } },
+//     };
+//   }
+// };
 
