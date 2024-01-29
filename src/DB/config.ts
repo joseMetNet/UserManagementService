@@ -30,7 +30,7 @@ async function connectToSqlServer() {
 const dbConnection = async () => {
   try {
     mongoose.set("strictQuery", false);
-    await mongoose.connect(config.mongo_connection);
+    // await mongoose.connect(config.mongo_connection);
     console.log(" 🌳 Conectado correctamente a la base de datos online".blue);
   } catch (err) {
     console.log(" 😡 No se pudo conectar a la base de datos -- MONGO ".red);
