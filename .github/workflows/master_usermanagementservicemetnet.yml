@@ -59,4 +59,4 @@ jobs:
           app-name: 'UserManagementServicemetnet'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C0BAE8F6CDA14A7CA7B8BAD1508C63DE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_896351CA98924C79B85971E0791746C0 }}
