@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 
 export const createUser = async (data: dataExample): Promise<IresponseRepositoryService> => {
   try {
-    const { email, password, tableName } = data;
+    const { email, password, userGroup } = data;
 
     const db = await connectToSqlServer();
 
@@ -16,10 +16,10 @@ export const createUser = async (data: dataExample): Promise<IresponseRepository
 
     // Realizar el INSERT en la tabla 
     await db?.request()
-    .query(`INSERT INTO TB_${tableName} VALUES ('${email}', '${hashedContrasena}')`);
+    .query(`INSERT INTO TB_${userGroup} VALUES ('${email}', '${hashedContrasena}')`);
     
     const result = await db?.request()
-    .query(`SELECT TOP 1 id,email FROM TB_${tableName} WHERE email = '${email}'`);
+    .query(`SELECT TOP 1 id,email FROM TB_${userGroup} WHERE email = '${email}'`);
 
     return {
       code: 200,
@@ -40,13 +40,13 @@ export const createUser = async (data: dataExample): Promise<IresponseRepository
 
 export const authenticateUser = async (data: dataExample): Promise<IresponseRepositoryService> => {
   try {
-    const { email, password, tableName } = data;
+    const { email, password, userGroup } = data;
 
     const db = await connectToSqlServer();
 
     // Obtener el usuario por correo electrónico
     const userResult = await db?.request()
-      .query(`SELECT TOP 1 * FROM TB_${tableName} WHERE email = '${email}'`);
+      .query(`SELECT TOP 1 * FROM TB_${userGroup} WHERE email = '${email}'`);
 
 
     // Verificar si se encontró un usuario
@@ -65,14 +65,14 @@ export const authenticateUser = async (data: dataExample): Promise<IresponseRepo
     if (!isPasswordValid) {
       return {
         code: 401,
-        message: 'ok',
-        data: user,
+        message: 'users.Invalid_password',
+        data: {email : user.email, password : password },
       };
     }
     return {
       code: 200,
-      message: 'ok',
-      data: user.id,
+      message: 'users.succesfull',
+      data: {email : user.email, id : user.id },
     };
 
   } catch (err: any) {

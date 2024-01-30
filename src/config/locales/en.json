@@ -15,8 +15,13 @@
 		"succesfull": "OK",
 		"errorInRepository": "Check the logs for the repository: {{name}}",
 		"idComposed": "Example id: {{_id}}",
-		"userNotFound": "users.userNotFound",
-		"authenticationSuccess": "users.authenticationSuccess"
+		"existing_user": "There is already a registered user with the provided email",
+		"user_group": "User group does not exist",
+		"validate_user_group": "The userGroup field is required for this operation and make sure it is of type string",
+		"validate_email": "The email field is required for this operation and make sure it is of type string",
+		"validate_password": "The password field is required for this operation and make sure it is of type string",
+		"Invalid_password": "the password is invalid"
+
 	},
 	"ok": "ok"
 }

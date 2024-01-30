@@ -1,7 +1,7 @@
 export interface dataExample  {
     password: string
     email: string
-    tableName: string
+    userGroup: string
 }
 
 export interface ImessageComposed {

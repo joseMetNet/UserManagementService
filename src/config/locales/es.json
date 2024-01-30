@@ -14,6 +14,13 @@
 		"validate_id": "The _id is required",
 		"succesfull": "OK",
 		"errorInRepository": "Check the logs for the repository: {{name}}",
-		"idComposed": "Example id: {{_id}}"
+		"idComposed": "Example id: {{_id}}",
+		"existing_user": "Ya existe un usuario registrado con el correo proporcionado",
+		"user_group": "El grupo de usuario no existe",
+		"validate_user_group": "Es necesario el campo userGroup para esta operación y asegurese que sea de tipo string",
+		"validate_email": "Es necesario el campo email para esta operación y asegurese que sea de tipo string",
+		"validate_password": "Es necesario el campo password para esta operación y asegurese que sea de tipo string",
+		"Invalid_password": "La contraseña es invalida"
+
 	}
 }
