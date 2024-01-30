@@ -23,3 +23,15 @@ export const authenticationUser: RequestHandler = async (req, res) => {
   }
 };
 
+export const getUser: RequestHandler = async (req, res) => {
+  try {
+    const { code, message, ...resto }: IresponseRepositoryService =
+      await repository.getUser(req.query);
+    res
+      .status(code)
+      .json({ message: parseMessageI18n(message, req), ...resto });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: parseMessageI18n("error_server", req) });
+  }
+};

@@ -1,4 +1,4 @@
-export interface dataExample  {
+export interface dataUser  {
     password: string
     email: string
     userGroup: string
@@ -15,4 +15,7 @@ export interface IresponseRepositoryService {
     data?: any
 }
 
-
+export interface IGetUser {
+    userGroup: string;
+    email: string;
+  }

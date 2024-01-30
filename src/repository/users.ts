@@ -1,9 +1,9 @@
-import { IresponseRepositoryService, dataExample } from "../interface/users";
+import { IresponseRepositoryService, dataUser,IGetUser } from "../interface/users";
 import { connectToSqlServer } from "../DB/config";
 import bcrypt from 'bcrypt';
 
 
-export const createUser = async (data: dataExample): Promise<IresponseRepositoryService> => {
+export const createUser = async (data: dataUser): Promise<IresponseRepositoryService> => {
   try {
     const { email, password, userGroup } = data;
 
@@ -28,7 +28,7 @@ export const createUser = async (data: dataExample): Promise<IresponseRepository
     };
 
   } catch (err: any) {
-    console.log("Err createExample", err);
+    console.log("Error creating user", err);
     return {
       code: 400,
       message: { translationKey: "users.errorInRepository", translationParams: { name: "createUser" } },
@@ -37,8 +37,33 @@ export const createUser = async (data: dataExample): Promise<IresponseRepository
 };
 
 
+export const getUser = async (params: IGetUser | any) => {
+  try {
+    const { email, userGroup } = params;
 
-export const authenticateUser = async (data: dataExample): Promise<IresponseRepositoryService> => {
+    const db = await connectToSqlServer();
+
+    const result = await db?.request()
+    .query(`SELECT TOP 1 id, email FROM TB_${userGroup} WHERE email = '${email}'`);
+
+    return {
+      code: 200,
+      message: 'users.succesfull',
+      data: result?.recordset
+    };
+
+  } catch (err: any) {
+    console.log("Error bringing user", err);
+    return {
+      code: 400,
+      message: { translationKey: "users.errorInRepository", translationParams: { name: "getUser" } },
+    };
+  }
+};
+
+
+
+export const authenticateUser = async (data: dataUser): Promise<IresponseRepositoryService> => {
   try {
     const { email, password, userGroup } = data;
 
@@ -76,7 +101,7 @@ export const authenticateUser = async (data: dataExample): Promise<IresponseRepo
     };
 
   } catch (err: any) {
-    console.error("Error en la autenticación del usuario", err);
+    console.error("User authentication failed", err);
     return {
       code: 500,
       message: { translationKey: "users.errorInRepository", translationParams: { name: "authenticateUser" } },
