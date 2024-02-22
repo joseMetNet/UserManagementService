@@ -19,7 +19,7 @@ export const createUser = async (data: dataUser): Promise<IresponseRepositorySer
     .query(`INSERT INTO TB_${userGroup} VALUES ('${userName}', '${hashedContrasena}')`);
     
     const result = await db?.request()
-    .query(`SELECT TOP 1 id,userName FROM TB_${userGroup} WHERE email = '${userName}'`);
+    .query(`SELECT TOP 1 id,userName FROM TB_${userGroup} WHERE userName = '${userName}'`);
 
     return {
       code: 200,
@@ -74,7 +74,7 @@ export const getUser = async (params: IGetUser | any) => {
     const db = await connectToSqlServer();
 
     const result = await db?.request()
-    .query(`SELECT TOP 1 id, userName FROM TB_${userGroup} WHERE email = '${userName}'`);
+    .query(`SELECT TOP 1 id, userName FROM TB_${userGroup} WHERE userName = '${userName}'`);
 
     return {
       code: 200,
@@ -121,13 +121,13 @@ export const authenticateUser = async (data: dataUser): Promise<IresponseReposit
       return {
         code: 401,
         message: 'users.Invalid_password',
-        data: {email : user.email, password : password },
+        data: {userName : user.userName, password : password },
       };
     }
     return {
       code: 200,
       message: 'users.succesfull',
-      data: {email : user.email, id : user.id },
+      data: {userName : user.userName, id : user.id },
     };
 
   } catch (err: any) {

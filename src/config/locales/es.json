@@ -19,7 +19,7 @@
 		"not_existing_user": "No existe un usuario registrado con el correo proporcionado",
 		"user_group": "El grupo de usuario no existe",
 		"validate_user_group": "Es necesario el campo userGroup para esta operación y asegurese que sea de tipo string",
-		"validate_user_Name": "Es necesario el campo email para esta operación y asegurese que sea de tipo string",
+		"validate_user_Name": "Es necesario el campo userName para esta operación y asegurese que sea de tipo string",
 		"validate_password": "Es necesario el campo password para esta operación y asegurese que sea de tipo string",
 		"Invalid_password": "La contraseña es invalida",
 		"validate_name_user_group": "Es necesario el campo nameUserGroup para esta operación y asegurese que sea de tipo string"
