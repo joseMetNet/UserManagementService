@@ -1,9 +1,11 @@
 export interface dataUser  {
     password: string
-    email: string
+    userName: string
     userGroup: string
 }
-
+export interface dataUserGroup  {
+    nameUserGroup: string
+}
 export interface ImessageComposed {
     translationKey: string,
     translationParams: object
@@ -17,5 +19,5 @@ export interface IresponseRepositoryService {
 
 export interface IGetUser {
     userGroup: string;
-    email: string;
+    userName: string;
   }

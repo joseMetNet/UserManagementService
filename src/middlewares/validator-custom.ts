@@ -1,6 +1,6 @@
 import { connectToSqlServer } from "../DB/config";
 
-export const validateExistUserByEmail = async (email: string, meta: any) => {
+export const validateExistUserUserName = async (email: string, meta: any) => {
   const tableName = meta.req.body.userGroup; // Accede al valor de 'tableName' desde la solicitud
   const db = await connectToSqlServer();
   // Realizar el INSERT en la tabla 
@@ -46,7 +46,7 @@ export const validateExistTableName = async (userGroup: string) => {
 };
 
 
-export const validateNotExistUserByEmail = async (email: string, meta: any) => {
+export const validateNotExistUserByUserName = async (email: string, meta: any) => {
   const tableName = meta.req.query.userGroup; // Accede al valor de 'tableName' desde la solicitud
 
   const db = await connectToSqlServer();

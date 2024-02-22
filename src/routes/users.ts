@@ -4,12 +4,13 @@ import {
   getUser,
   createUsers,
   authenticationUser,
+  createUserGroup
 } from "../controllers/users";
 import {
   validateExistTableName,
-  validateExistUserByEmail,
-  validateNotExistUserByEmail
-} from "../helpers/validator-custom";
+  validateExistUserUserName,
+  validateNotExistUserByUserName
+} from "../middlewares/validator-custom";
 import {validateEnpoint } from "../middlewares/validatorEnpoint";
 
 const routes = Router();
@@ -19,8 +20,8 @@ routes.post(
   [
     body("userGroup", "users.validate_user_group").notEmpty().isString(),
     body("userGroup").custom(validateExistTableName),
-    body("email", "users.validate_email").notEmpty().isEmail(),
-    body("email").custom(validateExistUserByEmail),
+    body("userName", "users.validate_user_Name").notEmpty().isString(),
+    body("userName").custom(validateExistUserUserName),
     body("password", "users.validate_password").notEmpty().isString(),
     validateEnpoint
   ],
@@ -28,11 +29,20 @@ routes.post(
 );
 
 routes.post(
+  "/createUserGroup",
+  [
+    body("nameUserGroup", "users.validate_user_group").notEmpty().isString(),
+    validateEnpoint
+  ],
+  createUserGroup
+);
+
+routes.post(
   "/authenticationUser",
   [
     body("userGroup","users.validate_user_group").notEmpty().isString(),
     body("userGroup").custom(validateExistTableName),
-    body("email", "users.validate_email").notEmpty().isEmail(),
+    body("userName", "users.validate_user_Name").notEmpty().isString(),
     body("password", "users.validate_password").notEmpty().isString(),
     validateEnpoint
   ],
@@ -44,8 +54,8 @@ routes.get(
   [
     query("userGroup","users.validate_user_group").notEmpty().isString(),
     query("userGroup").custom(validateExistTableName),
-    query("email", "users.validate_email").notEmpty().isEmail(),
-    query("email").custom(validateNotExistUserByEmail),
+    query("userName", "users.validate_user_Name").notEmpty().isString(),
+    query("userName").custom(validateNotExistUserByUserName),
     validateEnpoint
   ],
   getUser

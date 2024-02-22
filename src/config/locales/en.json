@@ -19,11 +19,14 @@
 		"not_existing_user": "There is no registered user with the email provided",
 		"user_group": "User group does not exist",
 		"validate_user_group": "The userGroup field is required for this operation and make sure it is of type string",
-		"validate_email": "The email field is required for this operation and make sure it is of type string",
+		"validate_user_Name": "The userName field is required for this operation and make sure it is of type string",
 		"validate_password": "The password field is required for this operation and make sure it is of type string",
-		"Invalid_password": "the password is invalid"
+		"Invalid_password": "The password is invalid",
+		"validate_name_user_group": "The nameUserGroup field is required for this operation and make sure it is of type string"
 	},
-	"Invalid object name 'TB_undefined'.": "Invalid object name 'TB_undefined'.",
-	"Cannot read properties of undefined (reading 'userGroup')": "Cannot read properties of undefined (reading 'userGroup')",
-	"Invalid object name 'TB_UsersPruebah'.": "Invalid object name 'TB_UsersPruebah'."
+	"UserGroup": {
+        "create_succesfull": "user group created successfully",
+		"succesfull": "OK",
+		"errorInRepository": "Check the logs for the repository: {{name}}"
+	}
 }

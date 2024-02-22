@@ -11,17 +11,22 @@
 		"error_routes": "Error en los campos requeridos"
 	},
 	"users": {
-		"validate_id": "The _id is required",
+		"validate_id": "El campo _id es requerido",
 		"succesfull": "OK",
-		"errorInRepository": "Check the logs for the repository: {{name}}",
+		"errorInRepository": "ocurrio un error en el repository: {{name}}",
 		"idComposed": "Example id: {{_id}}",
 		"existing_user": "Ya existe un usuario registrado con el correo proporcionado",
 		"not_existing_user": "No existe un usuario registrado con el correo proporcionado",
 		"user_group": "El grupo de usuario no existe",
 		"validate_user_group": "Es necesario el campo userGroup para esta operación y asegurese que sea de tipo string",
-		"validate_email": "Es necesario el campo email para esta operación y asegurese que sea de tipo string",
+		"validate_user_Name": "Es necesario el campo email para esta operación y asegurese que sea de tipo string",
 		"validate_password": "Es necesario el campo password para esta operación y asegurese que sea de tipo string",
-		"Invalid_password": "La contraseña es invalida"
-
+		"Invalid_password": "La contraseña es invalida",
+		"validate_name_user_group": "Es necesario el campo nameUserGroup para esta operación y asegurese que sea de tipo string"
+	},
+	"UserGroup": {
+        "create_succesfull": "user group creado con exito",
+		"succesfull": "OK",
+		"errorInRepository": "ocurrio un error en el repository: {{name}}"
 	}
 }
