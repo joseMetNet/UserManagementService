@@ -1,5 +1,7 @@
 import { IresponseRepositoryService, dataUser,IGetUser, dataUserGroup} from "../interface/users";
 import { connectToSqlServer } from "../DB/config";
+import { hashPassword } from "../helpers/user";
+
 import bcrypt from 'bcrypt';
 
 
@@ -9,10 +11,7 @@ export const createUser = async (data: dataUser): Promise<IresponseRepositorySer
 
     const db = await connectToSqlServer();
 
-    // Encriptar la contraseña utilizando bcrypt
-    const saltRounds = 10;
-    const salt = await bcrypt.genSalt(saltRounds);
-    const hashedContrasena = await bcrypt.hash(password, salt);
+    const hashedContrasena = await hashPassword(password);
 
     // Realizar el INSERT en la tabla 
     await db?.request()
@@ -61,6 +60,32 @@ export const createUserGroup = async (data: dataUserGroup): Promise<IresponseRep
     return {
       code: 400,
       message: { translationKey: "UserGroup.errorInRepository", translationParams: { name: "createUser" } },
+    };
+  }
+};
+
+
+export const recoverPassword = async (data: dataUser): Promise<IresponseRepositoryService> => {
+  try {
+    const { userGroup,userName,password} = data;
+
+    const db = await connectToSqlServer();
+
+    const hashedContrasena = await hashPassword(password);
+
+    await db?.request()
+    .query(`UPDATE TB_${userGroup} SET password = '${hashedContrasena}' WHERE userName = '${userName}' `);
+    
+    return {
+      code: 200,
+      message: 'users.successfully_updated',
+    };
+
+  } catch (err: any) {
+    console.log("Error update user", err);
+    return {
+      code: 400,
+      message: { translationKey: "users.errorInRepository", translationParams: { name: "recoverPassword" } },
     };
   }
 };

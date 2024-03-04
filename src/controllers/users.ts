@@ -23,6 +23,16 @@ export const createUserGroup: RequestHandler = async (req, res) => {
   }
 };
 
+export const recoverPassword: RequestHandler = async (req, res) => {
+  try {
+    const { code, message, ...resto }: IresponseRepositoryService = await repository.recoverPassword(req.body);
+    res.status(code).json({message: parseMessageI18n(message, req),  ...resto});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: parseMessageI18n("error_server", req) });
+  }
+};
+
 export const authenticationUser: RequestHandler = async (req, res) => {
   try {
     const { code, message, ...resto }: IresponseRepositoryService = await repository.authenticateUser(req.body);

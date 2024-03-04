@@ -13,6 +13,7 @@
 	"users": {
 		"validate_id": "The _id is required",
 		"succesfull": "OK",
+		"successfully_updated": "Successfully updated",
 		"errorInRepository": "Check the logs for the repository: {{name}}",
 		"idComposed": "Example id: {{_id}}",
 		"existing_user": "There is already a registered user with the provided userName",

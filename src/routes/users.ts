@@ -4,7 +4,8 @@ import {
   getUser,
   createUsers,
   authenticationUser,
-  createUserGroup
+  createUserGroup,
+  recoverPassword
 } from "../controllers/users";
 import {
   validateExistTableName,
@@ -47,6 +48,18 @@ routes.post(
     validateEnpoint
   ],
   authenticationUser
+);
+
+routes.put(
+  "/recoverPassword",
+  [
+    body("userGroup","users.validate_user_group").notEmpty().isString(),
+    body("userGroup").custom(validateExistTableName),
+    body("userName", "users.validate_user_Name").notEmpty().isString(),
+    body("password", "users.validate_password").notEmpty().isString(),
+    validateEnpoint
+  ],
+  recoverPassword
 );
 
 routes.get(
