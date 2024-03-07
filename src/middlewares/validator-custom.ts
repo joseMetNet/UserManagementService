@@ -1,9 +1,8 @@
 import { connectToSqlServer } from "../DB/config";
 
 export const validateExistUserUserName = async (userName: string, meta: any) => {
-  const tableName = meta.req.body.userGroup; // Accede al valor de 'tableName' desde la solicitud
+  const tableName = meta.req.body.userGroup;
   const db = await connectToSqlServer();
-  // Realizar el INSERT en la tabla 
   const result = await db?.request()
     .query(`SELECT TOP 1 id,userName FROM TB_${tableName} WHERE userName = '${userName}'`);
 
@@ -20,8 +19,6 @@ export const validateExistUserUserName = async (userName: string, meta: any) => 
 export const validateExistTableName = async (userGroup: string) => {
 
   const db = await connectToSqlServer();
-
-  // Realizar el INSERT en la tabla 
   const result = await db?.request()
     .query(`IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES  WHERE TABLE_NAME = 'TB_${userGroup}')
             BEGIN
@@ -47,10 +44,9 @@ export const validateExistTableName = async (userGroup: string) => {
 
 
 export const validateNotExistUserByUserName = async (userName: string, meta: any) => {
-  const tableName = meta.req.query.userGroup; // Accede al valor de 'tableName' desde la solicitud
+  const tableName = meta.req.query.userGroup; 
 
   const db = await connectToSqlServer();
-  // Realizar el INSERT en la tabla 
   const result = await db?.request()
     .query(`SELECT TOP 1 id,userName FROM TB_${tableName} WHERE userName = '${userName}'`);
 
