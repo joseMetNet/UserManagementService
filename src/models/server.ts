@@ -63,7 +63,6 @@ class Server {
   }
 
   routes() {
-    // example
     this.app.use(this.path.example, exampleRoutes);
   }
 
