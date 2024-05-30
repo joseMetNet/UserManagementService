@@ -82,3 +82,76 @@ inicialmente solo contendrá dos variables
 - para compilar en producción usaremos 
 `$ tsc`
 `$ npm start`
+
+*Para autenticar un usuario*
+Petición POST a https://usermanagementservicemetnet.azurewebsites.net/UserManagement/authenticationUser
+con body
+json
+{
+    "userGroup" : "",
+    "password" : "",
+    "email" : ""
+}
+
+respuesta :
+{
+    "message": "OK",
+    "data": {
+        "userName": "braysssss23sssa@gmail.com",
+        "id": 46
+    }
+}
+
+
+*Para registrar un usuario*
+Petición POST a https://usermanagementservicemetnet.azurewebsites.net/UserManagement
+con body
+json
+{
+    "userGroup" : "",
+    "password" : "",
+    "email" : ""
+}
+
+respuesta :
+{
+    "message": "OK",
+    "data": [
+        {
+            "id": 88,
+            "userName": "prueba@gmail.com"
+        }
+    ]
+}
+
+*Para verificar si un usuario existe*
+Petición GET a https://usermanagementservicemetnet.azurewebsites.net/UserManagement
+con parametro query params
+
+userName
+userGroup 
+
+respuesta: 
+{
+    "message": "OK",
+    "data": [
+        {
+            "id": 88,
+            "userName": "prueba@gmail.com"
+        }
+    ]
+}
+
+*Para crear grupo de usuarios*
+Petición POST a https://usermanagementservicemetnet.azurewebsites.net/createUserGroup
+con body
+json
+{
+    "nameUserGroup" : ""
+}
+
+respuesta: 
+{
+    "message": "OK",
+    "data": []
+}
